@@ -125,7 +125,7 @@ export function ImageDialog({ image, open, onOpenChange }: ImageDialogProps) {
             <img
               src={image.url}
               alt={image.title}
-              className="h-full w-full object-cover lg:object-contain"
+              className="h-full w-full object-cover lg:object-contain imagewahaibabu"
             />
           </div>
 
