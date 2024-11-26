@@ -19,7 +19,7 @@ export function ImageDialog({ image, open, onOpenChange }: ImageDialogProps) {
   
   if (!image) return null;
 
-  const handleDownload = async () => {
+/*  const handleDownload = async () => {
     try {
       const response = await fetch(image.url.replace("pizzart.me", "image-ai-virid.vercel.app"));
       if (!response.ok) throw new Error('Failed to fetch image');
@@ -48,6 +48,49 @@ export function ImageDialog({ image, open, onOpenChange }: ImageDialogProps) {
       });
     }
   };
+*/
+
+  const handleDownload = async () => {
+  try {
+    const response = await fetch(image.url.replace("pizzart.me", "image-ai-virid.vercel.app"));
+    if (!response.ok) throw new Error('Failed to fetch image');
+
+    const blob = await response.blob();
+    const fileName = `${image.title.replace(/[^a-z0-9]/gi, '_').toLowerCase()}.png`;
+
+    // For older Microsoft browsers (e.g., Edge Legacy, IE)
+    if (window.navigator && window.navigator.msSaveOrOpenBlob) {
+      window.navigator.msSaveOrOpenBlob(blob, fileName);
+    } else {
+      // For modern browsers
+      const blobUrl = URL.createObjectURL(blob);
+
+      // Trigger file download
+      const a = document.createElement('a');
+      a.style.display = 'none';
+      a.href = blobUrl;
+      a.download = fileName;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+
+      // Cleanup Blob URL
+      URL.revokeObjectURL(blobUrl);
+    }
+
+    toast({
+      title: 'Success',
+      description: 'Image downloaded successfully',
+    });
+  } catch (error) {
+    console.error('Error downloading image:', error);
+    toast({
+      title: 'Error',
+      description: 'Failed to download image',
+      variant: 'destructive',
+    });
+  }
+};
 
   const handleShare = async () => {
     try {
