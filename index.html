@@ -12,5 +12,38 @@
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script async="async" data-cfasync="false" src="//pl25118866.profitablecpmrate.com/13b58771286b2e80621647c218b9e829/invoke.js"></script>
+  <script>
+    // Function to append a new div at the end of the container if it doesn't already exist as the last child
+function appendContainer() {
+  // Find the parent container, where the divs should be appended (assuming it's the body)
+  const parentContainer = document.querySelector('.adsbhihoga'); // Adjust this selector if needed
+
+  // Find the existing div with the specific ID
+  const existingContainer = document.getElementById('container-13b58771286b2e80621647c218b9e829');
+
+  // Check if the existing container is the last child
+  if (!existingContainer || parentContainer.lastElementChild !== existingContainer) {
+    // If the container doesn't exist or isn't the last child, create and append the new div
+    const newDiv = document.createElement('div');
+    newDiv.id = 'container-13b58771286b2e80621647c218b9e829';
+    newDiv.innerHTML = ''; // Optional content
+    
+    // Append the new div to the parent container
+    parentContainer.appendChild(newDiv);
+    console.log("New div added at the end.");
+  } else {
+    console.log("Div with this ID already exists at the end, not adding again.");
+  }
+}
+
+// Function to run every 10-20 seconds
+function startAppending() {
+  // Set the interval to run the append function between 10 to 20 seconds
+  setInterval(appendContainer, Math.random() * (20000 - 10000) + 10000);
+}
+
+// Start the process
+startAppending();
+  </script>
   </body>
 </html>
