@@ -21,7 +21,7 @@ export function ImageDialog({ image, open, onOpenChange }: ImageDialogProps) {
 
   const handleDownload = async () => {
     try {
-      const response = await fetch(image.url);
+      const response = await fetch(image.url.replace("pizzart.me", "image-ai-virid.vercel.app"));
       if (!response.ok) throw new Error('Failed to fetch image');
       
       const blob = await response.blob();
