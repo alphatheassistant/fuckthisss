@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>⚡️ Bolt.new + Vite + React</title>
   </head>
-  <body>
+  <body onload="appendContainer()">
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
     <script async="async" data-cfasync="false" src="//pl25118866.profitablecpmrate.com/13b58771286b2e80621647c218b9e829/invoke.js"></script>
@@ -36,14 +36,17 @@ function appendContainer() {
   }
 }
 
-// Function to run every 10-20 seconds
+/*// Function to run every 10-20 seconds
 function startAppending() {
   // Set the interval to run the append function between 10 to 20 seconds
   setInterval(appendContainer, Math.random() * (20000 - 10000) + 10000);
 }
 
 // Start the process
-startAppending();
+startAppending();*/
+  window.onload = function() {
+  appendContainer();  // Run once on page load   // Start the interval for future appends
+};
   </script>
   </body>
 </html>
