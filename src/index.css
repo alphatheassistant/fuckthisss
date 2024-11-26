@@ -77,3 +77,15 @@
 button {
   outline: none !important;
 }
+
+
+.imagewahaibabu {
+  border-radius: .75rem 0 0 .75rem; /* Default for larger screens */
+}
+
+/* Media query for mobile devices */
+@media screen and (max-width: 768px) {
+  .imagewahaibabu {
+    border-radius: 0; /* No border-radius for mobile */
+  }
+}
