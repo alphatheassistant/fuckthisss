@@ -51,8 +51,8 @@ export function ImageDialog({ image, open, onOpenChange }: ImageDialogProps) {
 */
 
   const handleDownload = async () => {
-  try {
-    const response = await fetch(image.url.replace("pizzart.me/proxy/", "storage.googleapis.com/a1aa/image/")+".jpg");
+  try { /*image.url.replace("pizzart.me/proxy/", "storage.googleapis.com/a1aa/image/")+".jpg"*/
+    const response = await fetch(image.url);
     if (!response.ok) throw new Error('Failed to fetch image');
 
     const blob = await response.blob();
